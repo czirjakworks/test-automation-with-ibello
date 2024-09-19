@@ -38,15 +38,26 @@ public class LoginWorkflow extends StepLibrary {
     
     // 2.
     public void a_felhasználó_érvénytelen_jelszót_ad_meg() {
-    
+        String password = getConfigurationValue("demo.app.invalid.password").toString();
+        loginSteps.enter_$_password(password);
     }
     
     public void a_bejelentkezés_sikertelen() {
-    
+        loginSteps.login_page_is_loaded();
     }
     
     public void a_felhasználó_érvénytelen_felhasználói_adatokkal_kapcsolatos_hibaüzenetet_kap() {
-    
+        loginSteps.error_message_is_visible();
     }
+
+    public void a_felhasználó_korábbi_bejelentkezése_sikertelen_volt() {
+        String username = getConfigurationValue("demo.app.username").toString();
+        loginSteps.enter_$_username(username);
+        String password = getConfigurationValue("demo.app.invalid.password").toString();
+        loginSteps.enter_$_password(password);
+        loginSteps.attempt_to_login();
+        loginSteps.login_page_is_loaded();
+    }
+
 
 }

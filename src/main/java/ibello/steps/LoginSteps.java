@@ -2,15 +2,21 @@ package ibello.steps;
 
 import hu.ibello.core.Name;
 import hu.ibello.steps.StepLibrary;
+import ibello.pages.CasesPage;
 import ibello.pages.LoginPage;
 
 @Name("Login steps")
 public class LoginSteps extends StepLibrary{
     
     private LoginPage loginPage;
+    private CasesPage casesPage;
     
     public void open_demo_application() {
         loginPage.open_demo_page();
+        loginPage.page_must_be_loaded();
+    }
+
+    public void login_page_is_loaded() {
         loginPage.page_must_be_loaded();
     }
     
@@ -27,7 +33,13 @@ public class LoginSteps extends StepLibrary{
     }
     
     public void cases_page_is_loaded() {
-    
+        casesPage.page_must_be_loaded();
+    }
+
+    public void error_message_is_visible() {
+        loginPage.error_message_should_be_displayed();
+        String text=getConfigurationValue("demo.login.errormsg").toString();
+        loginPage.$_error_message_should_be_displayed(text) ;
     }
     
     @Name("login with ${0} user")
