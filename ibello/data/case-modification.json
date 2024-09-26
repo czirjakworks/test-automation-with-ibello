@@ -1,0 +1,11 @@
+{
+  "name":"Új név",
+  "status":"Aktív",
+  "date": "2024.09.24.",
+  "person":"Arany János",
+  "city":"Törökbálint",
+  "zipCode":"2045",
+  "street":"Tópark utca",
+  "number":"3",
+  "responsible":"Karinthy Frigyes"
+}

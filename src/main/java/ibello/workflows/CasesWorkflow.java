@@ -3,7 +3,9 @@ package ibello.workflows;
 import hu.ibello.core.Name;
 import hu.ibello.steps.StepLibrary;
 import ibello.data.Case;
+import ibello.pages.EditCasePage;
 import ibello.steps.CasesSteps;
+import ibello.steps.EditCaseSteps;
 import ibello.steps.NewCaseSteps;
 
 @Name("Cases")
@@ -12,6 +14,8 @@ public class CasesWorkflow extends StepLibrary {
     private CasesSteps casesSteps;
     private NewCaseSteps newCaseSteps;
     private Case newCase;
+    private EditCaseSteps editCaseSteps;
+    private static final int CASE_COUNT=4;
 
     public void a_felhasználó_az_új_ügy_rögzítési_felületen_van() {
         newCaseSteps.open_new_case_page();
@@ -35,75 +39,103 @@ public class CasesWorkflow extends StepLibrary {
     }
 
     public void az_új_ügy_megjelenik_az_ügyek_táblázatban() {
-        casesSteps.expect_case_exists(newCase);
+        casesSteps.assume_case_exists(newCase);
     }
 
     public void a_felhasználó_az_ügyek_oldalon_van() {
-        // TODO auto-generated method
+        casesSteps.open_cases_page();
+        casesSteps.cases_page_is_loaded();
     }
 
     public void a_rendszerben_van_már_egy_létező_ügy() {
-        // TODO auto-generated method
+        casesSteps.open_cases_page();
+        casesSteps.expect_minimum_one_case_exists();
     }
 
     public void a_felhasználó_megnyitja_az_ügyet() {
-        // TODO auto-generated method
+        casesSteps.open_first_case();
     }
 
-    public void az_ügy_oldala_megnyílik() {
-        // TODO auto-generated method
+    public void az_ügy_szerkesztő_oldala_megnyílik() {
+        editCaseSteps.edit_case_page_is_loaded();
     }
 
     public void az_ügy_adatai_megjelennek() {
-        // TODO auto-generated method
+        Case caseData = testData().fromJson(Case.class).withId("existing").load();
+        editCaseSteps.expect_case_data_is_visible(caseData);
     }
 
     public void a_felhasználó_az_ügyek_oldalra_lép() {
-        // TODO auto-generated method
+        casesSteps.open_cases_page();
+        casesSteps.cases_page_is_loaded();
     }
 
-    public void az_ügyek_listája_megjelenik_az_összes_ügy() {
-        // TODO auto-generated method
+    public void az_ügyek_listájában_megjelenik_az_összes_ügy() {
+        casesSteps.expect_exactly_$_case_exists(CASE_COUNT);
     }
 
     public void a_felhasználó_az_új_ügy_gombra_nyom() {
-        // TODO auto-generated method
+        casesSteps.click_on_new_case_button();
     }
 
     public void új_ügy_oldala_megnyílik() {
-        // TODO auto-generated method
+        newCaseSteps.new_case_page_is_loaded();
     }
 
     public void az_ügy_státusza_Új() {
-        // TODO auto-generated method
+        newCaseSteps.assume_case_status_is_new();
     }
 
     public void az_ügy_felelőse_a_felhasználó() {
-        // TODO auto-generated method
+        String responsible = testData().fromJson(Case.class).withId("responsible").load().getResponsible();
+        newCaseSteps.assume_case_responsible_is_$(responsible);
     }
 
     public void a_felhasználó_a_Mégsem_gombra_nyom() {
-        // TODO auto-generated method
+        newCaseSteps.cancel_form();
     }
 
     public void az_új_ügy_automatikusan_kap_azonosítót() {
-        // TODO auto-generated method
+        casesSteps.first_case_has_id();
     }
 
     public void a_felhasználó_az_ügy_szerkesztése_oldalon_van() {
-        // TODO auto-generated method
+        casesSteps.open_cases_page();
+        casesSteps.open_first_case();
+        editCaseSteps.edit_case_page_is_loaded();
     }
 
     public void a_felhasználó_megváltoztatja_az_ügy_alapadatait() {
-        // TODO auto-generated method
+        newCase = testData().fromJson(Case.class).withId("modification").load();
+        editCaseSteps.fill_form(newCase);
     }
 
     public void a_felhasználó_megváltoztatja_az_ügy_címét() {
-        // TODO auto-generated method
+        // The previous method covers it.
     }
 
     public void a_megváltozott_adatok_láthatóak_az_ügynél() {
-        // TODO auto-generated method
+        casesSteps.first_case_has_data(newCase);
     }
+
+    public void az_eredeti_adatok_láthatóak_az_ügynél() {
+        Case caseData = testData().fromJson(Case.class).withId("existingdefaultdata").load();
+        casesSteps.first_case_has_data(caseData);
+    }
+
+    public void az_ügy_azonosítója_megjelenik() {
+        Case caseData = testData().fromJson(Case.class).withId("existingdefaultdata").load();
+        editCaseSteps.assume_$_case_id_is_visible(caseData.getId());
+    }
+
+    public void az_ügy_felelőse_megjelenik() {
+        editCaseSteps.expect_responsible_field_is_not_empty();
+    }
+
+    public void az_azonosító_és_a_felelős_nem_módosíthatóak() {
+        output().recordCustomAction("The id is in the title can't be modified.");
+        editCaseSteps.assume_responsible_field_is_not_editable();
+    }
+
 
 }

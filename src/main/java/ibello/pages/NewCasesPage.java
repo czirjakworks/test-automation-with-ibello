@@ -7,7 +7,7 @@ public class NewCasesPage extends AbstractFormPage {
 
     private static final String URL = "https://ibello.hu/tasks/cases/#/new-case";
 
-    public void open_page(){
+    public void open_page() {
         browser().openURL(URL);
         browser().resize(1920, 1080);
         browser().maximize();

@@ -3,10 +3,11 @@ package ibello.steps;
 import hu.ibello.core.Name;
 import hu.ibello.steps.StepLibrary;
 import ibello.data.Case;
+import ibello.pages.AbstractFormPage;
 import ibello.pages.NewCasesPage;
 
 @Name("New Case steps")
-public class NewCaseSteps extends StepLibrary {
+public class NewCaseSteps extends AbstractFormSteps {
 
     private NewCasesPage newCasesPage;
 
@@ -19,22 +20,25 @@ public class NewCaseSteps extends StepLibrary {
         newCasesPage.page_must_be_loaded();
     }
 
-    public void fill_form(Case caseData) {
-        newCasesPage.set_name_to_$(caseData.getName());
-        newCasesPage.set_date_to_$(caseData.getDate());
-        newCasesPage.set_person_to_$(caseData.getPerson());
-        newCasesPage.set_city_to_$(caseData.getCity());
-        newCasesPage.set_zipCode_to_$(caseData.getZipCode());
-        newCasesPage.set_street_to_$(caseData.getStreet());
-        newCasesPage.set_number_to_$(caseData.getNumber());
-    }
-
     public void save_form() {
         newCasesPage.press_save_button();
     }
 
+    public void cancel_form() {
+        newCasesPage.press_cancel_button();
+    }
+
+    public void assume_case_status_is_new() {
+        newCasesPage.expect_case_status_is_new();
+    }
+
+    public void assume_case_responsible_is_$(String responsible) {
+        newCasesPage.expect_case_responsible_is_$(responsible);
+    }
 
 
-
-
+    @Override
+    public AbstractFormPage getFormPage() {
+        return newCasesPage;
+    }
 }

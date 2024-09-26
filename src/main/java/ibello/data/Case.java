@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @Name("Case")
 @Description("Data for Case objects")
 public class Case {
+    private String id;
     private String name;
     private String status;
     private LocalDate date;
@@ -19,6 +20,14 @@ public class Case {
     private String street;
     private String number;
     private String responsible;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
