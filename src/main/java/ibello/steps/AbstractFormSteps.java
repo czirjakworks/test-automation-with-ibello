@@ -31,7 +31,7 @@ public abstract class AbstractFormSteps extends StepLibrary {
     }
 
     public void assume_responsible_field_is_not_editable() {
-        assume_responsible_field_is_not_editable();
+        getFormPage().assume_responsible_field_is_not_editable();
     }
 
 }

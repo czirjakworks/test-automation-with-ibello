@@ -2,20 +2,23 @@ package ibello.workflows;
 
 import hu.ibello.core.Name;
 import hu.ibello.steps.StepLibrary;
+import ibello.steps.UserSteps;
 
 @Name("User")
 public class UserWorkflow extends StepLibrary {
 
+    private UserSteps userSteps;
+
     public void a_rendszerben_van_már_egy_létező_felhasználó() {
-        // TODO auto-generated method
+        output().recordCustomAction("There is a user in the application.");
     }
 
     public void a_felhasználó_megnyitja_a_felhasználó_adatai_képernyőt() {
-        // TODO auto-generated method
+        userSteps.open_user_page();
     }
 
     public void a_felhasználói_adatok_képernyő_megnyílik() {
-        // TODO auto-generated method
+        userSteps.user_page_is_loaded();
     }
 
     public void a_felhasználói_adatok_megjelennek() {
@@ -27,15 +30,17 @@ public class UserWorkflow extends StepLibrary {
     }
 
     public void a_felhasználó_a_felhasználói_adatok_oldalon_van() {
-        // TODO auto-generated method
+        userSteps.open_user_page();
+        userSteps.user_page_is_loaded();
     }
 
     public void a_felhasználó_helyesen_megadja_a_jelenlegi_jelszót() {
-        // TODO auto-generated method
+        String password = getConfigurationValue("demo.app.password").toString();
+        userSteps.enter_$_currentPassword(password);
     }
 
     public void a_felhasználó_megadja_az_új_jelszót_kétszer() {
-        // TODO auto-generated method
+
     }
 
     public void a_felhasználó_a_jelszó_változtatás_gombra_nyom() {
