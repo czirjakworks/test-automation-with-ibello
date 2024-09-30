@@ -5,11 +5,14 @@ import hu.ibello.steps.StepLibrary;
 import ibello.steps.CasesSteps;
 import ibello.steps.UserSteps;
 
-@Name("User")
+@Name("Users")
 public class UserWorkflow extends StepLibrary {
 
     private UserSteps userSteps;
     private CasesSteps casesSteps;
+    private String currentPassword;
+    private String password;
+
 
     public void a_rendszerben_van_már_egy_létező_felhasználó() {
         output().recordCustomAction("There is a user in the application.");
@@ -38,12 +41,12 @@ public class UserWorkflow extends StepLibrary {
     }
 
     public void a_felhasználó_helyesen_megadja_a_jelenlegi_jelszót() {
-        String currentPassword = getConfigurationValue("demo.app.password").toString();
+        currentPassword = getConfigurationValue("demo.app.password").toString();
         userSteps.enter_$_currentPassword(currentPassword);
     }
 
     public void a_felhasználó_megadja_az_új_jelszót_kétszer() {
-        String password = "Kk123456";
+        password = "Kk123456";
         userSteps.enter_$_password(password);
         userSteps.enter_$_password2(password);
     }
@@ -53,6 +56,7 @@ public class UserWorkflow extends StepLibrary {
     }
 
     public void a_jelszó_módosítása_sikeres() {
+        currentPassword = password;
         output().recordCustomAction("The password change was successful.");
     }
 

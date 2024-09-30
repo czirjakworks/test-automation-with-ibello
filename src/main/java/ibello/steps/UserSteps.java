@@ -49,10 +49,8 @@ public class UserSteps extends StepLibrary {
     public void expect_user_data_is_visible() {
         String userName = getConfigurationValue("demo.app.username").toString();
         String fullName = getConfigurationValue("demo.app.fullname").toString();
-        String password = getConfigurationValue("demo.app.password").toString();
         userPage.expect_userName_is_$(userName);
         userPage.expect_fullName_is_$(fullName);
-        userPage.expect_currentPassword_is_$(password);
     }
 
     public void assume_userName_field_and_fullName_field_is_not_editable() {

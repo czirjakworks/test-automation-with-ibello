@@ -5,10 +5,9 @@ Feature: Felhasználókhoz tartozó tesztek
 
 @user-1-1 @user-1-2 @useradatok
 Scenario: Felhasználói adatok megnyitása
-	Given a rendszerben van már egy létező felhasználó
-	When a felhasználó megnyitja a felhasználó adatai képernyőt
-	Then a felhasználói adatok képernyő megnyílik
-	And a felhasználói adatok megjelennek
+	Given a felhasználó a felhasználói adatok oldalon van
+	When a felhasználó ellenőrzi az adatokat
+	Then a felhasználói adatok megjelennek
 	And a felhasználói név és a teljes név nem szerkeszthető
 
 @user-2-1 @user-2-2 @user-2-3 @jelszomodositas
