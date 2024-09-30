@@ -6,11 +6,9 @@ import hu.ibello.elements.WebElement;
 import hu.ibello.pages.PageObject;
 import hu.ibello.search.By;
 import hu.ibello.search.Find;
-import ibello.data.Case;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.regex.Pattern;
 
 public abstract class AbstractFormPage extends PageObject {
 
@@ -22,9 +20,6 @@ public abstract class AbstractFormPage extends PageObject {
 
     @Find(by = By.ID, using = "status")
     private WebElement statusField;
-
-    @Find(by = By.ID, using = "validity")
-    private WebElement validityField;
 
     @Find(by = By.ID, using = "person")
     private WebElement personField;

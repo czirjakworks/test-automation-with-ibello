@@ -4,7 +4,6 @@ import hu.ibello.core.TestException;
 import hu.ibello.steps.StepLibrary;
 import ibello.data.Case;
 import ibello.pages.AbstractFormPage;
-import ibello.pages.NewCasesPage;
 
 public abstract class AbstractFormSteps extends StepLibrary {
 

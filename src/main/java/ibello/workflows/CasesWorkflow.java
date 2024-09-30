@@ -3,7 +3,6 @@ package ibello.workflows;
 import hu.ibello.core.Name;
 import hu.ibello.steps.StepLibrary;
 import ibello.data.Case;
-import ibello.pages.EditCasePage;
 import ibello.steps.CasesSteps;
 import ibello.steps.EditCaseSteps;
 import ibello.steps.NewCaseSteps;
@@ -27,7 +26,7 @@ public class CasesWorkflow extends StepLibrary {
     }
 
     public void a_felhasználó_a_holnapi_napot_adja_meg_érvényességi_időnek() {
-        // The previous method covers it.
+        //The previous method covers it.
     }
 
     public void a_felhasználó_elmenti_az_új_ügyet() {
@@ -111,7 +110,7 @@ public class CasesWorkflow extends StepLibrary {
     }
 
     public void a_felhasználó_megváltoztatja_az_ügy_címét() {
-        // The previous method covers it.
+        //The previous method covers it.
     }
 
     public void a_megváltozott_adatok_láthatóak_az_ügynél() {

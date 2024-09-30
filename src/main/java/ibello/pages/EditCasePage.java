@@ -1,7 +1,5 @@
 package ibello.pages;
 
-import hu.ibello.elements.WebElement;
-
 import java.util.regex.Pattern;
 
 public class EditCasePage extends AbstractFormPage {

@@ -1,8 +1,10 @@
 package ibello.steps;
 
+import hu.ibello.core.Name;
 import hu.ibello.steps.StepLibrary;
 import ibello.pages.UserPage;
 
+@Name("User Steps")
 public class UserSteps extends StepLibrary {
 
     private UserPage userPage;
@@ -44,6 +46,18 @@ public class UserSteps extends StepLibrary {
         userPage.$_error_message_should_be_displayed(text) ;
     }
 
+    public void expect_user_data_is_visible() {
+        String userName = getConfigurationValue("demo.app.username").toString();
+        String fullName = getConfigurationValue("demo.app.fullname").toString();
+        String password = getConfigurationValue("demo.app.password").toString();
+        userPage.expect_userName_is_$(userName);
+        userPage.expect_fullName_is_$(fullName);
+        userPage.expect_currentPassword_is_$(password);
+    }
 
+    public void assume_userName_field_and_fullName_field_is_not_editable() {
+        userPage.assume_userName_field_is_not_editable();
+        userPage.assume_fullName_field_is_not_editable();
+    }
 
 }

@@ -1,10 +1,12 @@
 package ibello.pages;
 
+import hu.ibello.core.Name;
 import hu.ibello.elements.WebElement;
 import hu.ibello.pages.PageObject;
 import hu.ibello.search.By;
 import hu.ibello.search.Find;
 
+@Name("User page")
 public class UserPage extends PageObject {
 
     private static final String URL = "https://ibello.hu/tasks/cases/#/user";
@@ -68,6 +70,31 @@ public class UserPage extends PageObject {
         expectations().assume(error).toHave().text(msg);
     }
 
+    public void expect_userName_is_$(String userName) {
+        expectations().expect(userNameField).toHave().textOrValue(userName);
+    }
 
+    public void expect_fullName_is_$(String fullName) {
+        expectations().expect(fullNameField).toHave().textOrValue(fullName);
+    }
 
+    public void expect_currentPassword_is_$(String currentPassword) {
+        expectations().expect(currentPasswordField).toHave().textOrValue(currentPassword);
+    }
+
+    public void expect_password_is_$(String password) {
+        expectations().expect(passwordField).toHave().textOrValue(password);
+    }
+
+    public void expect_password2_is_$(String password2) {
+        expectations().expect(password2Field).toHave().textOrValue(password2);
+    }
+
+    public void assume_userName_field_is_not_editable() {
+        expectations().assume(userNameField).toBe().readonly();
+    }
+
+    public void assume_fullName_field_is_not_editable() {
+        expectations().assume(fullNameField).toBe().readonly();
+    }
 }

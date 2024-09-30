@@ -1,7 +1,6 @@
 package ibello.pages;
 
 import hu.ibello.elements.WebElement;
-import hu.ibello.elements.WebElements;
 import hu.ibello.search.By;
 import ibello.pages.component.TableComponent;
 

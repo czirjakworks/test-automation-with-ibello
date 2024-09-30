@@ -57,4 +57,8 @@ public class CasesSteps extends StepLibrary {
         casesTable.expect_first_row_has_$_responsible(caseData.getResponsible());
     }
 
+    public void open_user_data_page() {
+        casesPage.open_user_data();
+    }
+
 }
