@@ -9,7 +9,7 @@ public class LoginWorkflow extends StepLibrary {
     
     private LoginSteps loginSteps;
 
-    // 1.
+    //1.
     public void a_felhasználó_a_bejelentkezési_felületen_van() {
         loginSteps.open_demo_application();
     }

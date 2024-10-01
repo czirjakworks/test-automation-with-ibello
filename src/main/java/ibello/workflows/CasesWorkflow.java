@@ -82,12 +82,12 @@ public class CasesWorkflow extends StepLibrary {
     }
 
     public void az_ügy_státusza_Új() {
-        newCaseSteps.assume_case_status_is_new();
+        newCaseSteps.expect_case_status_is_new();
     }
 
     public void az_ügy_felelőse_a_felhasználó() {
         String responsible = testData().fromJson(Case.class).withId("responsible").load().getResponsible();
-        newCaseSteps.assume_case_responsible_is_$(responsible);
+        newCaseSteps.expect_case_responsible_is_$(responsible);
     }
 
     public void a_felhasználó_a_Mégsem_gombra_nyom() {

@@ -1,9 +1,7 @@
 package ibello.steps;
 
-import hu.ibello.steps.StepLibrary;
 import ibello.data.Case;
 import ibello.pages.AbstractFormPage;
-import ibello.pages.CasesPage;
 import ibello.pages.EditCasePage;
 
 public class EditCaseSteps extends AbstractFormSteps {

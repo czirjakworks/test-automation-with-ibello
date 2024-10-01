@@ -62,7 +62,4 @@ public class TableComponent extends PageObject {
     private WebElements getBodyRows() {
         return getTable().find().using(By.CSS_SELECTOR, "tbody tr").all();
     }
-
-
-
 }

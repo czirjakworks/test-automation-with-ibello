@@ -39,10 +39,10 @@ public abstract class AbstractFormPage extends PageObject {
     @Find(by = By.ID, using = "responsible")
     private WebElement responsibleField;
 
-    @Find(by = By.BUTTON_TEXT, using = "Mentés")
+    @Find(by = By.BUTTON_TEXT, using = "${demo.newcases.savebutton}")
     private WebElement saveButton;
 
-    @Find(by = By.BUTTON_TEXT, using = "Mégsem")
+    @Find(by = By.BUTTON_TEXT, using = "${demo.newcases.cancelbutton}")
     private WebElement cancelButton;
 
     @Find(by = By.CLASS_NAME, using = "panel-title")
@@ -124,7 +124,7 @@ public abstract class AbstractFormPage extends PageObject {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String formattedDate = date.format(formatter);
         if (!formattedDate.equals(text)) {
-            throw new TestException("The date is not: " + formattedDate + ", the date is: " + text);
+            throw new TestException("The date is not: " + formattedDate + ", the date is: " + text + ".");
         }
     }
 

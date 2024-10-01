@@ -10,6 +10,7 @@ import hu.ibello.search.Find;
 public class LoginPage extends PageObject {
 
     private static final String URL = "https://ibello.hu/tasks/cases/#/login";
+    private static final String URL2 = "login";
 
     @Find(by = By.ID, using = "username")
     private WebElement usernameField;
@@ -29,7 +30,14 @@ public class LoginPage extends PageObject {
         browser().maximize();
     }
 
+    public void return_loading_page() {
+        browser().openURL(URL2);
+        //browser().resize(1920, 1080);
+        //browser().maximize();
+    }
+
     public void page_must_be_loaded() {
+        //expectations().expect(browser()).toBe().loaded();
         expectations().expect(usernameField).toBe().displayed();
         expectations().expect(passwordField).toBe().displayed();
     }

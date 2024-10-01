@@ -1,8 +1,6 @@
 package ibello.steps;
 
 import hu.ibello.core.Name;
-import hu.ibello.steps.StepLibrary;
-import ibello.data.Case;
 import ibello.pages.AbstractFormPage;
 import ibello.pages.NewCasesPage;
 
@@ -28,11 +26,11 @@ public class NewCaseSteps extends AbstractFormSteps {
         newCasesPage.press_cancel_button();
     }
 
-    public void assume_case_status_is_new() {
+    public void expect_case_status_is_new() {
         newCasesPage.expect_case_status_is_new();
     }
 
-    public void assume_case_responsible_is_$(String responsible) {
+    public void expect_case_responsible_is_$(String responsible) {
         newCasesPage.expect_case_responsible_is_$(responsible);
     }
 

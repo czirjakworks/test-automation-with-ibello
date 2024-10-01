@@ -16,6 +16,11 @@ public class LoginSteps extends StepLibrary{
         loginPage.page_must_be_loaded();
     }
 
+    public void return_loading_page() {
+        loginPage.return_loading_page();
+        loginPage.page_must_be_loaded();
+    }
+
     public void login_page_is_loaded() {
         loginPage.page_must_be_loaded();
     }
@@ -50,5 +55,12 @@ public class LoginSteps extends StepLibrary{
         attempt_to_login();
         cases_page_is_loaded();
     }
-    
+
+    @Name("login failed with ${0} user")
+    public void login_failed_with_$_user(String username, String password) {
+        open_demo_application();
+        enter_$_username(username);
+        enter_$_password(password);
+        attempt_to_login();
+    }
 }

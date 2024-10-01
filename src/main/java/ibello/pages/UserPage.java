@@ -47,7 +47,12 @@ public class UserPage extends PageObject {
     }
 
     public void click_on_password_change_button() {
-        doWith(passwordButton).click();
+        //tryWith(passwordButton).withPageRefreshWait().click();
+        doWith(passwordButton).withPageRefreshWait().click();
+        /*repeat(() -> {
+            doWith(passwordButton).click();
+            expectations().expect(passwordButton).toBe().enabled();
+        }).untilSucceeds();*/
     }
 
     public void set_currentPassword_to_$(String currentPassword) {
@@ -55,11 +60,11 @@ public class UserPage extends PageObject {
     }
 
     public void set_password_to_$(String password) {
-        doWith(passwordField).setValue(password);
+        doWith(passwordField).withPageRefreshWait().setValue(password);
     }
 
     public void set_password2_to_$(String password2) {
-        doWith(password2Field).setValue(password2);
+        doWith(password2Field).withPageRefreshWait().setValue(password2);
     }
 
     public void error_message_should_be_displayed() {
@@ -76,18 +81,6 @@ public class UserPage extends PageObject {
 
     public void expect_fullName_is_$(String fullName) {
         expectations().expect(fullNameField).toHave().textOrValue(fullName);
-    }
-
-    public void expect_currentPassword_is_$(String currentPassword) {
-        expectations().expect(currentPasswordField).toHave().textOrValue(currentPassword);
-    }
-
-    public void expect_password_is_$(String password) {
-        expectations().expect(passwordField).toHave().textOrValue(password);
-    }
-
-    public void expect_password2_is_$(String password2) {
-        expectations().expect(password2Field).toHave().textOrValue(password2);
     }
 
     public void assume_userName_field_is_not_editable() {
